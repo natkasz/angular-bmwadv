@@ -7,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RandomComponent implements OnInit {
   myNumber = Math.floor(Math.random() * 100);
+  napis = '';
+  kolor = 'green';
   constructor() {}
 
-  buttonOnClick(): void {
-    this.myNumber = Math.floor(Math.random() * 100);
+  buttonOnClick(nr): void {
+    this.myNumber = Math.floor(Math.random() * nr);
+    if (this.myNumber < 0.5 * nr) {
+      this.napis = 'Liczba jest w dolnym przedziale';
+      this.kolor = 'green';
+    } else {
+      this.napis = 'Liczba jest w górnym przedziale';
+      this.kolor = 'red';
+    }
   }
 
   ngOnInit() {}
